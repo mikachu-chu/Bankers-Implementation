@@ -1,73 +1,107 @@
 <script lang="ts">
   export let page;
-  export let cols;
   export let rows;
-  export let avail : number[];
-  export let alloc : number[][];
-  export let max : number[][];
-  export let needs : number[][];
+  export let avail: number[];
+  export let alloc: number[][];
+  export let needs: number[][];
+  let safeSequence: string[] = [];
+  let finished = Array(rows).fill(false);
+
+  function addArrays(a: number[], b: number[]): number[] {
+    return a.map((val, i) => val + b[i]);
+  }
 
   let instances = avail;
-  var i, j;
-  for (i in alloc) {
-  for (j in alloc[i]) {
 
+  for (const a of alloc) {
+    instances = addArrays(instances, a);
   }
- }
 
-  let current_alloc = alloc[1];
-  while (current_alloc != avail) {
+  //Finding the safe sequence
+  let work = avail;
+  let deadlock = false;
+  let updateWork = false;
+  let finish = false;
+
+  while (!deadlock && !finish) {
+    deadlock = true;
+
     for (let i = 0; i < rows; i++) {
-      needs[i] <= current_alloc ?
+      if (!finished[i]) {
+        updateWork = true;
+
+        for (let j = 0; j < needs[i].length; j++) {
+          if (needs[i][j] > work[j]) {
+            updateWork = false;
+            break;
+          }
+        }
+
+        if (updateWork) {
+          deadlock = false;
+          finished[i] = true;
+          work = addArrays(work, alloc[i]);
+          safeSequence.push((i + 1).toString());
+
+          if (safeSequence.length == rows) {
+            deadlock = false;
+            finish = true;
+            break;
+          }
+        }
+      }
     }
   }
-
-
-
 </script>
 
-   <form class="my-5 space-y-5" onsubmit={() => page = 6}>
-      <h1 class="text-md font-bold text-center">Step 6: Computation</h1>
-          <fieldset
-      class="fieldset w-xs px-3 rounded-box bg-transparent border-2 border-[#8B79D9] shadow-md" 
-    >
-      <legend class="fieldset-label text-base font-bold px-3">
-        Computation
-      </legend>
-      <div class="flex flex-col gap-1  overflow-x-auto pb-5">
-        <div class="flex flex-row w-fit">
-          <div class="w-10 ml-5"></div>
-          {#each {length: cols}, i}
-          <div class="mx-0.5 mb-2 w-10 mt-5 text-center">
-            <span class="text-sm sm:text-base font-semibold text-black"
-              >R<sub>{i+1}</sub></span
-            >
-          </div>
-          {/each}
-        </div>
-        {#each {length: rows}, i}
-        <div class="w-fit flex items-center ml-5">
-          <div class="w-10 aspect-ratio">
-            <span class="text-sm sm:text-base font-semibold text-black"
-              >P<sub>{i+1}</sub></span
-            >
-          </div>
-          {#each {length: cols}, j}
-          <div class="rounded-xs mx-0.5 w-10 aspect-square flex justify-center items-center bg-white text-black">
-          {needs[i][j]}
-          </div>
-          {/each}
-        </div>
-
-        {/each}
-      </div>
-    </fieldset>
-    <div class="w-xs flex justify-between">
-      <button class="btn btn-ghost border-0 bg-transparent" type="button" onclick={() => page = 4}>
-        <i class="ri-arrow-left-long-line ri-xl"></i>
-      </button>
-      <button class="btn btn-ghost border-0 bg-transparent" type="submit">
-        <i class="ri-arrow-right-long-line ri-xl"></i>
-      </button>
+<div class="mt-10 sm:w-lg flex flex-col items-center">
+  {#if deadlock}
+    <div class="w-xs sm:w-lg place-items-center space-y-1">
+      <h1 class="text-lg sm:text-xl font-bold">
+        Uh Oh... A deadlock has occured!
+      </h1>
+      <h2 class="text-sm sm:text-base">No safe sequence has been found</h2>
     </div>
-  </form>
+    <div class="flex items-center justify-center pt-5">
+      <img src="/src/assets/Locked.svg" alt="locked" class="-mr-5 z-1"/> 
+    <a class="btn pl-6" href="./App.svelte">Try Again</a>
+    </div>
+  {:else}
+    <div class="w-xs sm:w-lg place-items-center space-y-1">
+      <h1 class="text-lg sm:text-xl font-bold">Safe Sequence Found!</h1>
+      <h2 class="text-sm sm:text-base">Check out the safe sequence below</h2>
+    </div>
+    <div class="text-sm mt-10 mb-5">
+      <ul class="flex items-center w-xs sm:w-xl md:w-2xl md:{safeSequence.length<=5 ? 'justify-center' : ''} overflow-x-auto {safeSequence.length<=3? 'justify-center' : ''}">
+        {#each safeSequence as index, i}
+          <li>
+            <div
+              class="flex rounded-full aspect-square bg-[#fbca6f] justify-center items-center w-18 sm:w-24"
+            >
+              <div
+                class="flex rounded-full aspect-square bg-[#F8B858] justify-center items-center w-14 sm:w-19 text-base font-bold sm:text-xl"
+              >
+                P<sub>{index}</sub>
+              </div>
+            </div>
+          </li>
+          {#if i !== safeSequence.length - 1}
+            <i class="ri-arrow-right-long-line ri-xl mx-3"></i>
+          {/if}
+        {/each}
+      </ul>
+    </div>
+  {/if}
+
+  <div class="w-xs sm:w-lg flex justify-between mt-5 border-t pt-5">
+    <button
+      class="btn btn-ghost border-0 bg-transparent"
+      type="submit"
+      aria-label="button"
+      onclick={() => (page = 5)}
+    >
+      <i class="ri-arrow-left-long-line ri-xl"></i>
+    </button>
+    <a class="btn bg-[#8b79d9] border-0 shadow-md " href="./App.svelte" hidden={deadlock}>Try Again</a>
+  </div>
+</div>
