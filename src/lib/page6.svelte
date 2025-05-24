@@ -63,8 +63,8 @@
       <h2 class="text-sm sm:text-base">No safe sequence has been found</h2>
     </div>
     <div class="flex items-center justify-center pt-5">
-      <img src="/src/assets/Locked.svg" alt="locked" class="-mr-5 z-1"/> 
-    <a class="btn pl-6" href="./App.svelte">Try Again</a>
+      <img src="/src/assets/Locked.svg" alt="locked" class="-mr-5 z-1" />
+      <a class="btn pl-6" href="./App.svelte">Try Again</a>
     </div>
   {:else}
     <div class="w-xs sm:w-lg place-items-center space-y-1">
@@ -72,7 +72,14 @@
       <h2 class="text-sm sm:text-base">Check out the safe sequence below</h2>
     </div>
     <div class="text-sm mt-10 mb-5">
-      <ul class="flex items-center w-xs sm:w-xl md:w-2xl md:{safeSequence.length<=5 ? 'justify-center' : ''} overflow-x-auto {safeSequence.length<=3? 'justify-center' : ''}">
+      <ul
+        class="flex items-center w-xs sm:w-xl md:w-2xl md:{safeSequence.length <=
+        5
+          ? 'justify-center'
+          : ''} overflow-x-auto {safeSequence.length <= 3
+          ? 'justify-center'
+          : ''}"
+      >
         {#each safeSequence as index, i}
           <li>
             <div
@@ -102,6 +109,10 @@
     >
       <i class="ri-arrow-left-long-line ri-xl"></i>
     </button>
-    <a class="btn bg-[#8b79d9] border-0 shadow-md " href="./App.svelte" hidden={deadlock}>Try Again</a>
+    <a
+      class="btn bg-[#8b79d9] border-0 shadow-md"
+      href="./App.svelte"
+      hidden={deadlock}>Try Again</a
+    >
   </div>
 </div>

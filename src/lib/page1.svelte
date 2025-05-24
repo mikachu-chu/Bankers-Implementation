@@ -12,7 +12,9 @@
     <div
       class="bg-[#fbca6f] rounded-box w-35 py-3 h-fit place-items-center space-y-3 shadow-md"
     >
-      <p class="text-center text-sm sm:text-base text-black font-bold text-wrap">
+      <p
+        class="text-center text-sm sm:text-base text-black font-bold text-wrap"
+      >
         Number of <br /> Processes
       </p>
       <input
@@ -27,7 +29,9 @@
     <div
       class="bg-[#fbca6f] rounded-box w-35 py-3 h-fit place-items-center space-y-3 shadow-md"
     >
-      <p class="text-center  sm:text-base text-sm text-black font-bold text-wrap">
+      <p
+        class="text-center sm:text-base text-sm text-black font-bold text-wrap"
+      >
         Number of <br /> Resources
       </p>
       <input

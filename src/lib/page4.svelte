@@ -13,7 +13,7 @@
     Step 4: Fill out the Available Resources
   </h1>
   <fieldset
-    class="fieldset w-xs  sm:w-lg px-3 rounded-box bg-transparent border-2 border-[#8B79D9] shadow-md"
+    class="fieldset w-xs sm:w-lg px-3 rounded-box bg-transparent border-2 border-[#8B79D9] shadow-md"
   >
     <legend class="fieldset-label sm:text-lg text-base font-bold px-3">
       Available Resources
@@ -22,7 +22,8 @@
         type="button"
         aria-label="button"
         onclick={() => resetAvail()}
-        ><i class="ri-reset-right-line sm:scale-120 text-white sm:text-black"></i></button
+        ><i class="ri-reset-right-line sm:scale-120 text-white sm:text-black"
+        ></i></button
       >
     </legend>
     <div class="flex flex-col gap-1 overflow-x-auto pb-5">

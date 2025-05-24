@@ -10,11 +10,11 @@
 </script>
 
 <form class="my-10 space-y-5 place-items-center" onsubmit={() => (page = 6)}>
-  <h1 class="text-md sm:text-lg  font-bold text-center">
+  <h1 class="text-md sm:text-lg font-bold text-center">
     Almost there! Below is the Needs Matrix
   </h1>
   <fieldset
-    class="fieldset w-xs  sm:w-lg  px-3 rounded-box bg-transparent border-2 border-[#8B79D9] shadow-md"
+    class="fieldset w-xs sm:w-lg px-3 rounded-box bg-transparent border-2 border-[#8B79D9] shadow-md"
   >
     <legend class="fieldset-label sm:text-lg text-base font-bold px-3">
       Needs Matrix

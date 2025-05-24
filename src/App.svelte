@@ -16,11 +16,14 @@
   let avail: number[];
 </script>
 
-<main class="bg-linear-to-bl from-[#CCDCFF] to-[#805EBF]" in:fly={{ y: -500, duration: 1000 }}>
+<main
+  class="bg-linear-to-bl from-[#CCDCFF] to-[#805EBF]"
+  in:fly={{ y: -500, duration: 1000 }}
+>
   <div class="flex flex-col w-full items-center">
     <div class="mt-10 pb-5 w-xs sm:w-lg border-b place-items-center space-y-1">
       <div class="w-full">
-        <img src="/src/assets/headerLocked.svg" alt="DEADLOCKED" />
+        <img src="/src/assets/headerLocked.png" alt="DEADLOCKED" />
       </div>
       <h2 class="text-sm sm:text-lg text-center">
         An Implementation of Banker's Algorithm

@@ -23,7 +23,8 @@
         type="button"
         aria-label="button"
         onclick={() => resetAlloc()}
-        ><i class="ri-reset-right-line sm:scale-120 text-white sm:text-black"></i></button
+        ><i class="ri-reset-right-line sm:scale-120 text-white sm:text-black"
+        ></i></button
       >
     </legend>
     <div class="flex flex-col gap-1 overflow-x-auto pb-5">
