@@ -63,7 +63,7 @@
       <h2 class="text-sm sm:text-base">No safe sequence has been found</h2>
     </div>
     <div class="flex items-center justify-center pt-5">
-      <img src="./assets/Locked.svg" alt="locked" class="-mr-5 z-1" />
+      <img src="./Locked.svg" alt="locked" class="-mr-5 z-1" />
       <a class="btn pl-6" href="./App.svelte">Try Again</a>
     </div>
   {:else}
