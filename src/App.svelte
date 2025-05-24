@@ -23,7 +23,7 @@
   <div class="flex flex-col w-full items-center">
     <div class="mt-10 pb-5 w-xs sm:w-lg border-b place-items-center space-y-1">
       <div class="w-full">
-        <img src="./headerLocked.png" alt="DEADLOCKED" />
+        <img src="headerLocked.png" alt="DEADLOCKED" />
       </div>
       <h2 class="text-sm sm:text-lg text-center">
         An Implementation of Banker's Algorithm
