@@ -11,42 +11,37 @@
   }
 
   //Finding the safe sequence
-  let safeSequence: string[] = []; //array to store the safe sequence
-  let finished = Array(rows).fill(false); //flags if a certain process has finished
-  let work = avail; //initialize work as the available resources
-  let deadlock = false; //detects deadlock
+  let safeSequence: string[] = [];         //array to store the safe sequence
+  let finished = Array(rows).fill(false);  //flags if a certain process has finished
+  let work = avail;                        //initialize work as the available resources
+  let deadlock = false;                    //detects deadlock
   let updateWork = false;
-  let finish = false; //detects if a safe sequence has been found
+  let safe = false;                        //detects if a safe sequence has been found
 
-  while (!deadlock && !finish) {
-    //Keep running until no deadlock has been detected
-    deadlock = true; //or if no safe sequence has been found.
+  while (!deadlock && !safe) {             //Keep running until no deadlock has been detected
+    deadlock = true;                       //or if no safe sequence has been found yet.
 
-    for (let i = 0; i < rows; i++) {
-      //For each process,
-      if (!finished[i]) {
-        //check if that process has already finished.
-        updateWork = true; //Assume first that we need to update work.
+    for (let i = 0; i < rows; i++) {       //For each process,
+      if (!finished[i]) {                  //check if that process has already finished.
+        updateWork = true;                 //Assume first that we need to update work.
 
-        for (let j = 0; j < needs[i].length; j++) {
-          //For each resource,
-          if (needs[i][j] > work[j]) {
-            //check if needs is greater than work.
-            updateWork = false; //
+        for (let j = 0; j < needs[i].length; j++) {     //For each resource,
+          if (needs[i][j] > work[j]) {                  //check if needs is greater than work.
+            updateWork = false;                         //If so, DO NOT update work.
             break;
           }
         }
 
-        if (updateWork) {
-          deadlock = false;
-          finished[i] = true;
-          work = addArrays(work, alloc[i]);
-          safeSequence.push((i + 1).toString());
+        if (updateWork) {                           //Otherwise, we need to update work. 
+          deadlock = false;                         //That means there is no deadlock (yet).
+          finished[i] = true;                       //Mark the current process as finished.
+          work = addArrays(work, alloc[i]);         //Update work (work = work + allocation).
+          safeSequence.push((i + 1).toString());    //Add the process to the (potential) safe sequence
 
-          if (safeSequence.length == rows) {
-            deadlock = false;
-            finish = true;
-            break;
+          if (safeSequence.length == rows) {        //If all processes have been added to safe sequence,
+            deadlock = false;                       //then there is no deadlock,
+            safe = true;                            //and the state is safe;
+            break;                                  //so break out of the for loop.
           }
         }
       }
