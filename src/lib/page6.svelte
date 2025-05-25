@@ -4,35 +4,35 @@
   export let avail: number[];
   export let alloc: number[][];
   export let needs: number[][];
-  let safeSequence: string[] = [];
-  let finished = Array(rows).fill(false);
 
+  //function for adding arrays
   function addArrays(a: number[], b: number[]): number[] {
     return a.map((val, i) => val + b[i]);
   }
 
-  let instances = avail;
-
-  for (const a of alloc) {
-    instances = addArrays(instances, a);
-  }
-
   //Finding the safe sequence
-  let work = avail;
-  let deadlock = false;
+  let safeSequence: string[] = []; //array to store the safe sequence
+  let finished = Array(rows).fill(false); //flags if a certain process has finished
+  let work = avail; //initialize work as the available resources
+  let deadlock = false; //detects deadlock
   let updateWork = false;
-  let finish = false;
+  let finish = false; //detects if a safe sequence has been found
 
   while (!deadlock && !finish) {
-    deadlock = true;
+    //Keep running until no deadlock has been detected
+    deadlock = true; //or if no safe sequence has been found.
 
     for (let i = 0; i < rows; i++) {
+      //For each process,
       if (!finished[i]) {
-        updateWork = true;
+        //check if that process has already finished.
+        updateWork = true; //Assume first that we need to update work.
 
         for (let j = 0; j < needs[i].length; j++) {
+          //For each resource,
           if (needs[i][j] > work[j]) {
-            updateWork = false;
+            //check if needs is greater than work.
+            updateWork = false; //
             break;
           }
         }
@@ -63,7 +63,7 @@
       <h2 class="text-sm sm:text-base">No safe sequence has been found</h2>
     </div>
     <div class="flex items-center justify-center pt-5">
-      <img src="/Locked.svg" alt="locked" class="-mr-5 z-1" />
+      <img src="/Locked.png" alt="locked" class="-mr-5 z-1" />
       <a class="btn pl-6" href="./App.svelte">Try Again</a>
     </div>
   {:else}
