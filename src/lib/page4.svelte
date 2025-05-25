@@ -13,7 +13,7 @@
     Step 4: Fill out the Available Resources
   </h1>
   <fieldset
-    class="fieldset w-xs sm:w-lg px-3 rounded-box bg-transparent border-2 border-[#8B79D9] shadow-md"
+    class="fieldset min-w-xs sm:max-w-lg xl:max-w-2xl px-3 rounded-box bg-transparent border-2 border-[#8B79D9] shadow-md"
   >
     <legend class="fieldset-label sm:text-lg text-base font-bold px-3">
       Available Resources
@@ -51,7 +51,7 @@
       </div>
     </div>
   </fieldset>
-  <div class="w-xs sm:w-lg flex justify-between">
+  <div class="w-xs sm:w-lg xl:w-2xl flex justify-between border-t pt-5 mt-10">
     <button
       class="btn btn-ghost border-0 bg-transparent"
       type="button"

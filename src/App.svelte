@@ -21,7 +21,9 @@
   in:fly={{ y: -500, duration: 1000 }}
 >
   <div class="flex flex-col w-full items-center">
-    <div class="mt-10 sm:mt-20 w-xs sm:w-lg border-b place-items-center">
+    <div
+      class="mt-10 sm:mt-20 w-xs sm:w-lg xl:w-2xl border-b place-items-center"
+    >
       <div class="flex justify-center items-end w-xs sm:w-lg">
         <p class="text-4xl sm:text-6xl tracking-widest pb-3 sm:pb-5">DEADL</p>
         <label class="swap swap-flip">

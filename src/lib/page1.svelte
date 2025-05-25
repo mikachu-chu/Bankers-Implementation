@@ -8,7 +8,7 @@
   <h1 class="text-md sm:text-lg font-bold text-center">
     Step 1: Kindly enter following details
   </h1>
-  <div class="w-xs sm:w-lg justify-center gap-5 sm:gap-10 flex">
+  <div class="w-xs sm:w-lg xl:w-2xl justify-center gap-5 sm:gap-10 flex">
     <div
       class="bg-[#fbca6f] rounded-box w-35 py-3 h-fit place-items-center space-y-3 shadow-md"
     >
@@ -45,7 +45,7 @@
     </div>
   </div>
 
-  <div class="w-xs sm:w-lg flex justify-end">
+  <div class="w-xs sm:w-lg xl:w-2xl flex justify-end border-t pt-5 mt-10">
     <button
       class="btn btn-ghost border-0 bg-transparent"
       type="submit"

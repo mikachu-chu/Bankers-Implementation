@@ -9,12 +9,12 @@
   }
 </script>
 
-<form class="my-10 space-y-5" onsubmit={() => (page = 3)}>
+<form class="my-10 space-y-5 place-items-center" onsubmit={() => (page = 3)}>
   <h1 class="text-md sm:text-lg font-bold text-center">
     Step 2: Fill out the Allocation Matrix
   </h1>
   <fieldset
-    class="fieldset w-xs sm:w-lg px-3 rounded-box bg-transparent border-2 border-[#8B79D9] shadow-md"
+    class="fieldset min-w-xs sm:max-w-lg xl:max-w-2xl px-3 rounded-box bg-transparent border-2 border-[#8B79D9] shadow-md"
   >
     <legend class="fieldset-label sm:text-lg text-base font-bold px-3">
       Allocation Matrix
@@ -59,7 +59,7 @@
       {/each}
     </div>
   </fieldset>
-  <div class="w-xs sm:w-lg flex justify-between">
+  <div class="w-xs sm:w-lg xl:w-2xl flex justify-between border-t pt-5 mt-10">
     <button
       class="btn btn-ghost border-0 bg-transparent"
       type="button"

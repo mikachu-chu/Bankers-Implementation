@@ -51,29 +51,27 @@
 
 <div class="mt-10 sm:w-lg flex flex-col items-center">
   {#if deadlock}
-    <div class="w-xs sm:w-lg place-items-center space-y-1">
+    <div class="w-xs sm:max-w-lg xl:max-w-2xl place-items-center space-y-1">
       <h1 class="text-lg sm:text-xl font-bold">
         Uh Oh... A deadlock has occured!
       </h1>
       <h2 class="text-sm sm:text-base">No safe sequence has been found</h2>
     </div>
-    <div class="flex items-center justify-center pt-5">
-      <img src="/Locked.png" alt="locked" class="-mr-5 z-1" />
-      <a class="btn pl-6" href="./App.svelte">Try Again</a>
+    <div class="flex items-center justify-center mt-5">
+      <img src="/Locked.png" alt="locked" class="h-35 -mr-5 z-1" />
+      <a class="btn pl-6" href="/index.html">Try Again</a>
     </div>
   {:else}
-    <div class="w-xs sm:w-lg place-items-center space-y-1">
+    <div class="min-w-xs sm:max-w-lg xl:max-w-2xl place-items-center space-y-1">
       <h1 class="text-lg sm:text-xl font-bold">Safe Sequence Found!</h1>
       <h2 class="text-sm sm:text-base">Check out the safe sequence below</h2>
     </div>
-    <div class="text-sm mt-10 mb-5">
+    <div class="text-sm mt-10">
       <ul
-        class="flex items-center w-xs sm:w-xl md:w-2xl md:{safeSequence.length <=
-        5
-          ? 'justify-center'
-          : ''} overflow-x-auto {safeSequence.length <= 3
-          ? 'justify-center'
-          : ''}"
+        class="flex items-center w-xs sm:w-lg xl:w-2xl overflow-x-auto"
+        class:justify-center={safeSequence.length <= 2}
+        class:sm:justify-center={safeSequence.length <= 3}
+        class:xl:justify-center={safeSequence.length <= 5}
       >
         {#each safeSequence as index, i}
           <li>
@@ -95,7 +93,7 @@
     </div>
   {/if}
 
-  <div class="w-xs sm:w-lg flex justify-between mt-5 border-t pt-5">
+  <div class="w-xs sm:w-lg xl:w-2xl flex justify-between border-t pt-5 mt-10">
     <button
       class="btn btn-ghost border-0 bg-transparent"
       type="submit"
@@ -106,7 +104,7 @@
     </button>
     <a
       class="btn bg-[#8b79d9] border-0 shadow-md"
-      href="./App.svelte"
+      href="/index.html"
       hidden={deadlock}>Try Again</a
     >
   </div>
